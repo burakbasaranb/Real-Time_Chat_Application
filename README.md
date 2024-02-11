@@ -24,13 +24,12 @@ cd RealTimeChatExample
 
 The server-side logic is hosted on Glitch.me. The server.js file contains the Node.js code for the chat server.
 
-- Server URL: https://realtimechatexample.glitch.me
-- Port: 443
+- Look Glitch.me Project: [https://realtimechatexample.glitch.me](https://glitch.com/edit/#!/realtimechatexample)
 
 ### Dependencies
 - Socket.io - Version 2.0.0
 
-## Glitch.me Server Node.js package.json
+## Glitch.me Node Dependencies (package.json)
 ```
 {
   "name": "RealTimeChatExample",
@@ -64,33 +63,26 @@ The server-side logic is hosted on Glitch.me. The server.js file contains the No
 var server = require('http').createServer();
 var io = require('socket.io')(server);
 
-var userList = {};
-
-function user (id) {
-    this.id = id;
-    this.userName = null; 
-    this.date = null;
-    this.message = null; 
-}
+var userList = [];
 
 io.sockets.on('connection', function(socket) {
 
   console.log("New user joined!");
   
   socket.on ('eventStartChat', function (data, response) {
-    // socket id
+    // get socket id
     var id = socket.id;
-    // add new user to user list
-    userList[id] = new user (id);
-    // response id to the owner
+    // add socket id to user list
+    userList.push(id);
+    // response socket id to the owner
     response(id); 
 
     console.log(userList);
   });
   
   socket.on ('message', function (data) { 
-    // id is on the list
-    if(!userList[data.id]) return;
+    // user id is in the list
+    if (!userList.includes(data.id)) return;
     console.log("message: "+data.id+" / "+data.userName+" / "+data.date+" / "+data.message);
     // return message to owener
     socket.emit ('chats', data);
@@ -99,8 +91,8 @@ io.sockets.on('connection', function(socket) {
   });
   
   socket.on('disconnect',function(){
-    // id is on the list
-    if(!userList[socket.id]) return;
+    // socket id is in the list
+    if (!userList.includes(socket.id)) return;
 
     delete userList[socket.id];
     // Update clients with the new player killed 
