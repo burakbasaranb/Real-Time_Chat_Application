@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Real-Time Chat Example</title>
+    <!-- In order to connect to the server, it is necessary to open a connection from our own server to an external source.  -->
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-messages"></div>
+        <div id="chat-input">
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button id="btnSendMessage">Send</button>
+        </div>
+        <div>
+            <input type="text" id="name-input" placeholder="Type your name">
+        </div>
+    </div>
+
+<!-- Socket library which should be compatible with server site -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.0/socket.io.js"></script>
+<!-- Jquery library -->
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<!-- App library -->
+<script src="app.js"></script>
+</body>
+</html>
