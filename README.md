@@ -1,10 +1,36 @@
 # Real Time Chat Application
 
-A simple real-time chat application built with HTML, CSS, and JavaScript. The server-side logic is implemented using Node.js on Glitch.me.
+A simple real-time chat application built with HTML, CSS, and JavaScript. The server-side logic is implemented using Node.js on Glitch.me. Users can fork and use this application for real-time communication.
 
-You can fork end use it
+## Features
 
-### Node.js package.json
+- Real-time messaging using Socket.io
+- User registration with unique IDs
+- Left and right message alignment
+- Basic styling for a clean user interface
+
+## Usage
+
+Just Fork the repository 
+
+Clone the repository to your local machine:
+
+```
+git clone https://github.com/burakbasaranb/Real-Time_Chat_Application.git
+cd RealTimeChatExample
+```
+
+## Server Details
+
+The server-side logic is hosted on Glitch.me. The server.js file contains the Node.js code for the chat server.
+
+- Server URL: https://realtimechatexample.glitch.me
+- Port: 443
+
+### Dependencies
+- Socket.io - Version 2.0.0
+
+## Glitch.me Server Node.js package.json
 ```
 {
   "name": "RealTimeChatExample",
@@ -32,7 +58,7 @@ You can fork end use it
 }
 ```
 
-### Glitch.me server.js
+## Glitch.me Server Code (server.js)
 ```js
 //https://realtimechatexample.glitch.me:443
 var server = require('http').createServer();
@@ -87,3 +113,13 @@ io.sockets.on('connection', function(socket) {
 console.log ('Real-Time Chat Started.');
 server.listen(3000);
 ```
+
+### License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+### Acknowledgments
+
+Special thanks to [Glitch.com](https://glitch.com) for providing an easy platform to host and remix this project.
+
+Feel free to customize this template further based on your specific details or additional features.
